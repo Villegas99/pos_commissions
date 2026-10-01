@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_pos_commission">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h2 class="text-center">Reporte de Comisiones</h2>
+
+                        <table class="table table-sm table-hover">
+                            <thead>
+                                <tr class="bg-light">
+                                    <th class="text-center">Empleado</th>
+                                    <th class="text-center">Producto</th>
+                                    <th class="text-center">Fecha</th>
+                                    <th class="text-end">P. Unitario</th>
+                                    <th class="text-end">Cantidad</th>
+                                    <th class="text-end">%</th>
+                                    <th class="text-end">Monto</th>
+                                    <th class="text-center">Pagado</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-set="total" t-value="0.0"/>
+                                <tr t-foreach="o" t-as="commission">
+                                    <td class="text-center">
+                                        <span t-esc="commission.x_studio_employee_id.name"/>
+                                    </td>
+                                    <td class="text-center">
+                                        <span t-esc="commission.x_studio_product_id.display_name"/>
+                                    </td>
+                                    <td class="text-center">
+                                        <span t-esc="commission.x_studio_date"
+                                              t-options="{'widget': 'datetime', 'format': 'dd/MM/yyyy'}"/>
+                                    </td>
+                                    <td class="text-end">
+                                        <span t-esc="commission.x_studio_unit_price"
+                                              t-options="{'widget': 'float', 'precision': 2}"/>
+                                    </td>
+                                    <td class="text-end">
+                                        <span t-esc="commission.x_studio_quantity"
+                                              t-options="{'widget': 'float', 'precision': 2}"/>
+                                    </td>
+                                    <td class="text-end">
+                                        <span t-esc="commission.x_studio_percentage"
+                                              t-options="{'widget': 'float', 'precision': 2}"/>
+                                    </td>
+                                    <td class="text-end">
+                                        <span t-esc="commission.x_studio_commission_amount"
+                                              t-options="{'widget': 'float', 'precision': 2}"/>
+                                    </td>
+                                    <td class="text-center">
+                                        <span t-if="commission.x_studio_is_paid">Sí</span>
+                                        <span t-else="">No</span>
+                                    </td>
+                                    <t t-set="total" t-value="total + commission.x_studio_commission_amount"/>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr class="border-black">
+                                    <td colspan="6" class="text-end">
+                                        <strong>Total a Pagar:</strong>
+                                    </td>
+                                    <td class="text-end">
+                                        <strong t-esc="total"
+                                                t-options="{'widget': 'float', 'precision': 2}"/>
+                                    </td>
+                                    <td/>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

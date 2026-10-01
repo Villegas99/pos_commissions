@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_report_pos_commission" model="ir.actions.report">
+        <field name="name">Reporte de Comisiones</field>
+        <field name="model">pos.commission</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">pos_commissions.report_pos_commission</field>
+        <field name="report_file">pos_commissions.report_pos_commission</field>
+        <field name="binding_model_id" ref="model_pos_commission"/>
+        <field name="binding_type">report</field>
+        <field name="paperformat_id" ref="base.paperformat_euro"/>
+    </record>
+</odoo>

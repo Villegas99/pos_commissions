@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="ir_actions_server_mark_commission_paid" model="ir.actions.server">
+        <field name="name">Marcar como pagada</field>
+        <field name="model_id" ref="model_pos_commission"/>
+        <field name="binding_model_id" ref="model_pos_commission"/>
+        <field name="binding_view_types">list</field>
+        <field name="state">code</field>
+        <field name="code">records.action_x_studio_mark_as_paid()</field>
+    </record>
+</odoo>

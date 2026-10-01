@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_pos_commission_root"
+              name="Comisiones"
+              sequence="25"
+              groups="base.group_user"/>
+
+    <menuitem id="menu_pos_commission_records"
+              name="Registros de Comisión"
+              parent="menu_pos_commission_root"
+              action="action_pos_commission"
+              sequence="10"/>
+</odoo>
